@@ -22,29 +22,6 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 });
 
-let projectData = {}
-
-// app.post('/nlp', async (req, res) => {
-//     const url = "https://api.meaningcloud.com/sentiment-2.1";
-//     const params = {
-//         key: process.env.API_KEY,
-//         lang: "en",
-//         url: req.body.url
-//     };
-    
-//     try {
-//         const response = await axios({
-//             url,
-//             method: "POST",
-//             params
-//         });
-//         const {score_tag, agreement, subjectivity, confidence, irony} = response.data;
-//         res.status(200).json({score_tag, agreement, subjectivity, confidence, irony});
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err)
-//     }
-// });
 
 app.post('/collectData', async (req, res) => {
     const {city, country, date} = req.body;
