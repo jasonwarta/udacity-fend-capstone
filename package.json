@@ -1,16 +1,45 @@
 {
-  "name": "JasonWarta-udacity-fend-capstone",
+  "name": "udacity-fend-capstone",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/jasonwarta/udacity-fend-capstone.git",
-  "author": "Jason Warta <jasonwarta@gmail.com>",
+  "author": "Jason Warta",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "test": "jest",
+    "start": "node src/server/index.js",
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server  --config webpack.dev.js --open"
+  },
   "dependencies": {
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "webpack": "4.35.3",
+    "webpack-cli": "3.3.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "axios": "^0.20.0",
+    "babel-loader": "^8.1.0",
+    "body-parser": "^1.19.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "cors": "^2.8.5",
+    "css-loader": "^3.6.0",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^26.5.2",
+    "mini-css-extract-plugin": "0.8.0",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^4.2.3",
+    "webpack-dev-server": "^3.11.0",
+    "workbox-webpack-plugin": "^5.1.4"
   }
 }
