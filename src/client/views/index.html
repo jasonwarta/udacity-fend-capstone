@@ -3,47 +3,66 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Weather Journal</title>
+  <title>Travel Planner</title>
   <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 
-<body>
-  <div id="app">
-    <div class="holder headline">
-      Weather Journal App
-    </div>
-    <div>
-      <form>
+<body onload="return Client.onload()">
+  <div class="container">
+    <header>
+      <h1>
+        Travel Planner
+      </h1>
+    </header>
+
+    <section class="trip">
+      <div id="image">
+        <img src="" alt="">
+      </div>
+
+      <div id="tripName">
+        <h3>
+          My Trip to: <span id="city"></span>
+        </h3>
+        <h3>
+          Departing: <span id="date"></span>
+        </h3>
+      </div>
+
+      <div id="buttons">
+        <button onClick="return Client.saveTrip()">Save Trip</button>
+        <button onClick="return Client.removeTrip()">Remove Trip</button>
+      </div>
+
+      <div id="countdown">
+        <h4><span id="city"></span> is <span id="days"></span> days away</h4>
+      </div>
+
+      <div id="weather">
+        <h4>Typical weather for then is:</h4>
+        <p>
+          Temperature: High: <span id="high"></span>, Low: <span id="low"></span>
+          <br>
+          Estimated cloud coverage is <span id="clouds"></span>%.
+        </p>
+      </div>
+    </section>
+
+    <section class="addTrip">
+      <div>
         <label for="city">Enter City</label>
         <input type="text" id="city" placeholder="city" default="New York">
-        <label for="country" id="country">Country Code</label>
-        <input type="text" id="country" placeholder="country" default="US">
+      </div>
+      <div>
         <label for="date" id="date">Date</label>
         <input type="date" id="date" placeholder="date" default="2020-10-17">
-        <button type="submit" onClick="return Client.handleSubmit(event)">Submit shit</button>
-      </form>
-    </div>
-    <!-- <div class="holder zip">
-      <label for="zip">Enter Zipcode here</label>
-      <input type="text" id="zip" placeholder="enter zip code here">
-    </div> -->
-    <div class="holder feel">
-      <label for="feelings">How are you feeling today?</label>
-      <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-      <button id="generate" type="submit"> Generate </button>
-    </div>
-    <div class="holder entry">
-      <div class="title">Most Recent Entry</div>
-      <div id="entryHolder">
-        <div id="date"></div>
-        <div id="temp"></div>
-        <div id="content"></div>
       </div>
-    </div>
+      <div>
+        <button type="submit" onClick="return Client.handleSubmit(event)">Submit</button>
+      </div>
+    </section>
+  
   </div>
-  <!-- <script src="app.js" type="text/javascript"></script> -->
-
 </body>
 
 </html>

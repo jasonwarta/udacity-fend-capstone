@@ -1,0 +1,30 @@
+:root {
+    --shadow-color: #a4a4a4;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #5d5d5d;
+    background-color: #f0f0f0;
+    font-size: 14px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header h1 {
+    margin-left: 20px;
+    color: black;
+    -webkit-text-fill-color: grey;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.content, .trip {
+    background-color: tan;
+}
+
+button {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #22b2da;
+}

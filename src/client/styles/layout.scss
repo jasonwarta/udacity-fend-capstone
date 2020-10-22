@@ -1,0 +1,78 @@
+.container {
+  display: grid;
+  grid-template-rows: repeat(6, auto);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "hd"
+      "main"
+      "footer"
+      ;
+  }
+
+@media (min-width: 769px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "hd hd"
+      "main main"
+      "footer footer"
+    ;
+  }
+}
+
+header {
+  grid-area: hd;
+  position: relative;
+  background-color: #f0f0f0;
+}
+
+.addTrip {
+  grid-area: footer;
+}
+
+.trip {
+  grid-area: main;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr;
+    grid-template-areas:
+      "image"
+      "tripName"
+      "buttons"
+      "countdown"
+      "weather"
+    ;
+}
+
+@media (min-width: 769px) {
+  .trip {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "image tripName"
+      "image buttons"
+      "image countdown"
+      "image weather"
+    ;
+  }
+}
+
+#image {
+  grid-area: image;
+}
+
+#tripName {
+  grid-area: tripName;
+}
+
+#buttons {
+  grid-area: buttons;
+}
+
+#countdown {
+  grid-area: countdown;
+}
+
+#weather {
+  grid-area: weather;
+}

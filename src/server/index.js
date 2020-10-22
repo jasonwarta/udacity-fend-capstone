@@ -5,7 +5,7 @@ const cors = require('cors');
 const axios = require('axios');
 
 const GEONAMES_URL = 'http://api.geonames.org/searchJSON';
-const WEATHER_URL = 'http://api.weatherbit.io/v2.0/forecast/daily';
+const WEATHER_URL = 'http://api.weatherbit.io/v2.0/history/daily';
 const PIXABAY_URL = 'https://pixabay.com/api/'
 
 const dotenv = require('dotenv');
@@ -24,44 +24,56 @@ app.get('/', function (req, res) {
 
 
 app.post('/collectData', async (req, res) => {
-    const {city, country, date} = req.body;
+    const {city, date} = req.body;
 
-    console.log({city, country, date})
+    console.log({city, date})
 
     // get city data from GeoNames
     const cityData = await axios.get(GEONAMES_URL, {
         params: {
             username: process.env.GEONAMES_USERNAME,
             name: city,
-            country,
             lang: 'en',
             maxRows: 1
         }
     })
-    .then(({data: {geonames: [placeData]}}) => placeData);
+    .then(({data: {geonames: [placeData]}}) => placeData)
+    .catch(err => console.log('error getting city data', err));
 
     // Get weather data from WeatherBit using lat and long from geonames
     const {lat, lng} = cityData;
+    let lastYear = new Date(date);
+    lastYear.setFullYear(2019);
+    const startDate = `${lastYear.getFullYear()}-${lastYear.getMonth()+1}-${lastYear.getDate()+1}`;
+    lastYear.setDate(lastYear.getDate() + 1);
+    const endDate = `${lastYear.getFullYear()}-${lastYear.getMonth()+1}-${lastYear.getDate()+1}`;
+
+    console.log(startDate, endDate);
+    
     const weatherData = await axios.get(WEATHER_URL, {
         params: {
             key: process.env.WEATHERBIT_API_KEY,
             units: 'I',
             lat,
             lon: lng,
+            start_date: startDate,
+            end_date: endDate,
         }
     })
-    .then(({data: {data}}) => data.filter(({datetime}) => datetime === date));
+    .then(({data: {data: [weather]}}) => weather)
+    .catch(err => console.log('error getting weather data', err));
 
-    // get a photo of the city or country
+    // get a photo of the city
     const picture = await axios.get(PIXABAY_URL, {
         params: {
             key: process.env.PIXABAY_API_KEY,
-            q: city,
+            q: `${city}`,
             image_type: 'photo',
             category: 'places'
         }
     })
-    .then(({data: {hits: [{webformatURL}]}}) => webformatURL);
+    .then(({data: {hits: [{webformatURL}]}}) => webformatURL)
+    .catch(err => console.log('error getting photo data', err))
 
 
     res.status(200).json({cityData, weatherData, picture});

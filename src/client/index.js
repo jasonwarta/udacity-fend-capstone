@@ -1,5 +1,16 @@
-import {handleSubmit} from './js/handleSubmit';
+import handleSubmit from './js/handleSubmit';
+import onload from './js/onload';
+import saveTrip from './js/saveTrip';
+import removeTrip from './js/removeTrip';
 
-import './styles/styles.scss';
+import './styles/theme.scss';
+import './styles/layout.scss';
+import './styles/trip.scss';
+import './styles/entry.scss';
 
-export {handleSubmit}
+export {
+    handleSubmit,
+    onload,
+    saveTrip,
+    removeTrip,
+}

@@ -1,0 +1,27 @@
+.addTrip {
+    background-color: tan;
+    padding: 20px;
+
+    div {
+        display: inline-block;
+    }
+
+    label {
+        display: inline;
+        font-size: 20px;
+    }
+    
+    input {
+        display: inline;
+        height: 30px;
+        width: 200px;
+        background:#22b2da;
+        font-size: 20px;
+        border-radius: 5px;
+        border: 1px solid #22b2da;
+        margin-right: 5px;
+    }
+}
+
+
+
