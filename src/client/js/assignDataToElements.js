@@ -15,7 +15,6 @@ const assignDataToElements = (data) => {
         }
     } = data;
 
-    // set countdown
     document.querySelector('#countdown #city').innerText = `${cityName}, ${countryName}`;
     document.querySelector('#countdown #days').innerText = calculateCountdown(date);
 
