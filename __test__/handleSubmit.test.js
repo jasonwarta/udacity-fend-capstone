@@ -1,4 +1,4 @@
-import {handleSubmit} from '../src/client/js/handleSubmit'
+import handleSubmit from '../src/client/js/handleSubmit'
 
 // more in-depth testing for this sort of function isn't practical
 // it requires a simulated event, a running server, and costs API credits
